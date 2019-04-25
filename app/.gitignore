@@ -1,2 +1,5 @@
 # Ignore the makefile, used for testing the server and stuff.
 makefile
+
+# Ignore the serve stuff.
+serve.sh
