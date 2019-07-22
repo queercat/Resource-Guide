@@ -1,4 +1,4 @@
 {
-    resources_directory: "/files",
-    db_directory: "/db",
+    "resources_directory": "/files",
+    "db_directory": "/db"
 }

@@ -12,7 +12,7 @@ var filesToCache = [
     'favicon.png',
 
     'css/styles.css',
-]
+];
 
 // Checking if the service worker actually exists.
 if ('serviceWorker' in navigator) {
@@ -26,7 +26,7 @@ if ('serviceWorker' in navigator) {
 
 // Activating the service worker.
 self.addEventListener('activate', function (event) {
-  console.log('Service Worker is happy.);
+  console.log('Service Worker is happy.');
 });
 
 // Installing files to local cache.
