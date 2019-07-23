@@ -1,3 +1,11 @@
 {
-    // Add manifest data for home-screen stuff.
+  "name": "Homeless Resources",
+  "short_name": "Resources",
+  "theme_color": "rgb(255,65,54)",
+  "background_color": "rgb(253,247,247)",
+  "display": "browser",
+  "Scope": "/",
+  "start_url": "/",
+  "icons": null,
+  "splash_pages": null
 }

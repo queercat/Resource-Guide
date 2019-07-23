@@ -11,7 +11,7 @@ var filesToCache = [
     'manifest.json',
     'favicon.png',
 
-    'css/styles.css',
+    'styles/styles.css',
 ];
 
 // Checking if the service worker actually exists.
