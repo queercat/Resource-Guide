@@ -64,8 +64,8 @@ function hiddenFigures(snapshot) {
         SGOValue = '';
         SGOValue += '<div class="col-12">';
 
-        for (var service in category) {
-            SGOValue += '<div class="card card-small" id=' + service + '><div class="card-body text-dark"><p1>' + service + '</p1></div></div>';
+        for (service in category) {
+            SGOValue += '<div class="card card-small" id="' + service + '"><div class="card-body text-dark"><p1>' + service + '</p1></div></div>';
         };
 
         SGOValue += '</div>'
@@ -76,22 +76,26 @@ function hiddenFigures(snapshot) {
 
 /**
  * @desc createModal ... Dyanmicaly create a modal!
- * @param {String} service_name ... The name of the service we're gnereating the modal for.
+ * @param {String} service_name ... The name of the service we're generating the modal for.
  * @param {Object} snap ... JSON object with fun data. 
  */
 function createModal(service_name, snap) {
-    ModalValue = '';
-    ModalValue += '<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="dynamicModal" aria-hidden="true">'
-    ModalValue += '<div class="modal-dialog modal-dialog-centered" role="document">'
-    ModalValue += '<div class="modal-content">'
-    ModalValue += '<div class="modal-header">'
-    ModalValue += '<h5 class="modal-title" id="dyanmicModal">Modal title</h5>'
-    ModalValue += '<button type="button" class="close" data-dismiss="modal" aria-label="Close">'
-    ModalValue += '<span aria-hidden="true">&times;</span>'
-    ModalValue += '</button>'
-    ModalValue += '</div>'
-    
+    $('#servicesProvided').text('');
 
+    $('#serviceName').text(service_name);
+    $('#serviceDescription').text(snap[service_name]['Description']);
+    $('#serviceLocation').text(snap[service_name]['Location']);
+    $('#servicePhoneNumber').text(snap[service_name]['Phone']);
+
+
+    servicesText = '';
+    
+    for (var service in snap[service_name]['Services']) {
+        servicesText += '<li class="list-group-item">' + service +'</li>';
+    }
+    $('#servicesProvided').append(servicesText);
+
+    $('#dynamicModal').modal('show');
 }
 
 /* Listeners go here! */
