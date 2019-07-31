@@ -9,7 +9,6 @@ var filesToCache = [
     'index.html',
     'sw.js',
     'manifest.json',
-    'favicon.png',
 
     'styles/styles.css',
 ];

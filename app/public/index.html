@@ -6,11 +6,15 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="HandheldFriendly" content="true">
+        <meta name="theme-color" content="rgb(255,65,54)">
 
         <title>Resource Information</title>
 
         <!-- Web Icon-->
         <link rel="shortcut icon" type="image/ico" href="images/icon.ico">
+
+        <!-- App Manifest -->
+        <link rel="manifest" href="/manifest.json">
 
         <!-- Bootstrap Stylesheet -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -22,8 +26,8 @@
     <body>
         <!-- Navbars are cool -->
         <div class="margin-bottom">
-            <div class="navbar navbar-expand-lg navbar-dark" style="background-image: linear-gradient(to right, rgb(255, 65, 54), rgb(255, 133, 27))">
-                <a class="navbar-brand" href="#"><h1 class="display" style="color: rgb(0, 0, 0);">Resource Finder</h1></a>
+            <div class="navbar navbar-expand-lg navbar-dark">
+                <a class="navbar-brand" href="#"><h1 class="display big-boy">Resource Information</h1></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -38,28 +42,28 @@
         <!-- Primary Body Container -->
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12">
+                <div class="col-lg-6 col-12">
                     <div class="card">
                         <div class="card-body text-dark">
                             <h2>Bus Information</h2>
                         </div>
                     </div>
                 </div>
-                <div class="col-12">
+                <div class="col-lg-6 col-12">
                     <div class="card">
                         <div class="card-body">
                             <h2>Clothing</h2>
                         </div>
                     </div>
                 </div>
-                <div class="col-12">
+                <div class="col-lg-6 col-12">
                     <div class="card">
                         <div class="card-body">
                             <h2>Animal Care</h2>
                         </div>
                     </div>
                 </div>
-                <div class="col-12">
+                <div class="col-lg-6 col-12">
                     <div class="card">
                         <div class="card-body">
                             <h2>Counseling</h2>
@@ -97,15 +101,15 @@
 
         <!-- Service Worker Management (Offline Stuff) -->
         <script>
-            // Register the service worker if possible.
             if ('serviceWorker' in navigator) {
-                navigator.serviceWorker
-                    .register('/sw.js')
-                    .then(function() {
-                        console.log('Service Worker Registered.');
-                }).catch(function(err) {
-                    console.log('Server Worker Registration Failure.');
-                    console.log(err);
+                window.addEventListener('load', function() {
+                    navigator.serviceWorker.register('/sw.js').then(function(registration) {
+                        // Registration was successful
+                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                    }, function(err) {
+                        // registration failed :(
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
                 });
             }
         </script>
