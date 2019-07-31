@@ -15,6 +15,7 @@
     border-radius: 5px;
     -webkit-transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
     transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+
 }
 
 .card::after {
@@ -36,9 +37,46 @@
     opacity: 1;
 }
 
+.hidden {
+    opacity: 0;
+    transition: visibility 200ms cubic-bezier(0.165, 0.84, 0.44, 1), opacity 200ms cubic-bezier(0.165, 0.84, 0.44, 1);    
+    visibility: hidden;
+    position: absolute;
+}
+
 .brand-text {
     color: black;
     font-size: 35px;
+}
+
+.small-card {
+    background: white;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.loading-screen {
+    z-index: 999;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    background-color: #FF4136;   
+}
+
+.loading-spinner {
+    z-index: 1000;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 100px;
+    height: 100px;
+
+    border-radius: 10%;
+
+    background-color: black;
 }
 
 body {

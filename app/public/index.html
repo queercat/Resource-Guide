@@ -35,82 +35,113 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-6 col-12">
-                    <div class="card">
+                    <div class="card" id="food">
                         <div class="card-body text-dark">
                             <h2>Food</h2>
                         </div>
                     </div>
+
+                    <div class="container-fluid hidden" id="food-sg">
+                    </div>
                 </div>
 
                 <div class="col-lg-6 col-12">
-                    <div class="card">
+                    <div class="card" id="medical">
                         <div class="card-body text-dark">
                             <h2>Medical</h2>
                         </div>
                     </div>
+
+                    <div class="container-fluid hidden" id="medical-sg">
+                    </div>
                 </div>
 
                 <div class="col-lg-6 col-12">
-                    <div class="card">
+                    <div class="card" id="shelter">
                         <div class="card-body text-dark">
                             <h2>Shelter</h2>
                         </div>
                     </div>
+
+
+                    <div class="container-fluid hidden" id="shelter-sg">
+                    </div>
                 </div>
 
                 <div class="col-lg-6 col-12">
-                    <div class="card">
+                    <div class="card" id="youth-family">
                         <div class="card-body text-dark">
                             <h2>Youth & Family</h2>
                         </div>
                     </div>
+
+                    <div class="container-fluid hidden" id="youth-family-sg">
+                    </div>
                 </div>
 
                 <div class="col-lg-6 col-12">
-                    <div class="card">
+                    <div class="card" id="clothing">
                         <div class="card-body text-dark">
                             <h2>Clothing</h2>
                         </div>
                     </div>
+
+                    <div class="container-fluid hidden" id="clothing-sg">
+                    </div>
                 </div>
 
                 <div class="col-lg-6 col-12">
-                    <div class="card">
+                    <div class="card" id="mental-health">
                         <div class="card-body text-dark">
                             <h2>Mental Health</h2>
                         </div>
                     </div>
+
+                    <div class="container-fluid hidden" id="mental-health-sg">
+                    </div>
                 </div>
 
                 <div class="col-lg-6 col-12">
-                    <div class="card">
+                    <div class="card" id="veteran">
                         <div class="card-body text-dark">
                             <h2>Veteran</h2>
                         </div>
                     </div>
+
+                    <div class="container-fluid hidden" id="veteran-sg">
+                    </div>
                 </div>
 
                 <div class="col-lg-6 col-12">
-                    <div class="card">
+                    <div class="card" id="lgbtq">
                         <div class="card-body text-dark">
                             <h2>LGBTQ+</h2>
                         </div>
                     </div>
+
+                    <div class="container-fluid hidden" id="lgbtq-sg">
+                    </div>
                 </div>
                 
                 <div class="col-lg-6 col-12">
-                    <div class="card">
+                    <div class="card" id="latinx">
                         <div class="card-body text-dark">
                             <h2>LatinX</h2>
                         </div>
                     </div>
+
+                    <div class="container-fluid hidden" id="latinx-sg">
+                    </div>
                 </div>
 
                 <div class="col-lg-6 col-12">
-                    <div class="card">
+                    <div class="card" id="bus-information">
                         <div class="card-body text-dark">
                             <h2>Bus Information</h2>
                         </div>
+                    </div>
+
+                    <div class="container-fluid hidden" id="bus-information-sg">
                     </div>
                 </div>
 
@@ -122,8 +153,7 @@
         <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-app.js"></script>
 
         <!-- Add Firebase products that you want to use -->
-        <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-auth.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-database.js"></script>
 
         <!-- jQuery CDN -->
         <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
@@ -136,14 +166,14 @@
 
         <!-- Service Worker Management (Offline Stuff) -->
         <script>
-            if ('serviceWorker' in navigator) {
-                window.addEventListener('load', function() {
-                    navigator.serviceWorker.register('/sw.js').then(function(registration) {
+            if ("serviceWorker" in navigator) {
+                window.addEventListener("load", function() {
+                    navigator.serviceWorker.register("/sw.js").then(function(registration) {
                         // Registration was successful
-                        console.log('ServiceWorker registration successful with scope: ', registration.scope);
+                        console.log("ServiceWorker registration successful with scope: ", registration.scope);
                     }, function(err) {
                         // registration failed :(
-                        console.log('ServiceWorker registration failed: ', err);
+                        console.log("ServiceWorker registration failed: ", err);
                     });
                 });
             }
