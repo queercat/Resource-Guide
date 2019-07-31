@@ -25,18 +25,10 @@
 
     <body>
         <!-- Navbars are cool -->
-        <div class="margin-bottom">
-            <div class="navbar navbar-expand-lg navbar-dark">
-                <a class="navbar-brand" href="#"><h1 class="display big-boy">Resource Information</h1></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                    </ul>
-                </div>
-            </div>
+        <div class="navbar navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="#">
+                <h1 class="brand-text">Resource Information</h1>
+            </a>
         </div>
 
         <!-- Primary Body Container -->
@@ -45,14 +37,38 @@
                 <div class="col-lg-6 col-12">
                     <div class="card">
                         <div class="card-body text-dark">
-                            <h2>Bus Information</h2>
+                            <h2>Food</h2>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-6 col-12">
                     <div class="card">
-                        <div class="card-body">
+                        <div class="card-body text-dark">
+                            <h2>Medical</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-12">
+                    <div class="card">
+                        <div class="card-body text-dark">
+                            <h2>Shelter</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-12">
+                    <div class="card">
+                        <div class="card-body text-dark">
+                            <h2>Youth & Family</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-12">
+                    <div class="card">
+                        <div class="card-body text-dark">
                             <h2>Clothing</h2>
                         </div>
                     </div>
@@ -60,19 +76,45 @@
 
                 <div class="col-lg-6 col-12">
                     <div class="card">
-                        <div class="card-body">
-                            <h2>Animal Care</h2>
+                        <div class="card-body text-dark">
+                            <h2>Mental Health</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-12">
+                    <div class="card">
+                        <div class="card-body text-dark">
+                            <h2>Veteran</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-12">
+                    <div class="card">
+                        <div class="card-body text-dark">
+                            <h2>LGBTQ+</h2>
                         </div>
                     </div>
                 </div>
                 
                 <div class="col-lg-6 col-12">
                     <div class="card">
-                        <div class="card-body">
-                            <h2>Counseling</h2>
+                        <div class="card-body text-dark">
+                            <h2>LatinX</h2>
                         </div>
                     </div>
                 </div>
+
+                <div class="col-lg-6 col-12">
+                    <div class="card">
+                        <div class="card-body text-dark">
+                            <h2>Bus Information</h2>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
 
@@ -82,16 +124,6 @@
         <!-- Add Firebase products that you want to use -->
         <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/6.3.1/firebase-firestore.js"></script>
-
-        <script>
-            // TODO: Replace the following with your app's Firebase project configuration
-            var firebaseConfig = {
-              // ...
-            };
-        
-            // Initialize Firebase
-            firebase.initializeApp(firebaseConfig);
-        </script>
 
         <!-- jQuery CDN -->
         <script src="https://code.jquery.com/jquery-3.4.0.min.js"></script>
@@ -118,6 +150,6 @@
         </script>
 
         <!-- Script Stuff -->
-        <!-- <script src="scripts" async></script> -->
+        <script src="scripts/app.js"></script>
     </body>
 </html>
