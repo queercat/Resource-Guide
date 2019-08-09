@@ -20,7 +20,6 @@ database = firebase.database();
 function init() {
     services = reqServices().then(function(services) {
         visibleFigures(services);
-        hiddenFigures(services);
     });
 }
 
@@ -44,21 +43,26 @@ function visibleFigures(services) {
 
     cards = $('#cards');
 
+    card = '';
+
     for (var service in serviceList) {
-        card = '';
         serviceName = serviceList[service];
-        
+
         card += '<div class="col-12">';
-        card += '<div class="card" id=' + serviceName + '>';
+        card += '<div class="card" id="' + serviceName + '">';
         card += '<div class="card-body text-dark">';
         card += '<h2>' + serviceName + '</h2>';
-        card += '</div>'
-        card += '</div>'
-        card += '</div>'
-
-        cards.append(card);
+        card += '</div>';
+        card += '</div>';
+        card += '<div class="container-fluid hidden" id="' + serviceName + '-SG">';
+        card += '</div>';
+        card += '</div>';
     }
 
+    cards.append(card);
+
+
+    hiddenFigures(services);
     $('.loading-screen').addClass('hidden');
 }
 
@@ -71,23 +75,57 @@ function hiddenFigures(snapshot) {
         object = $(this);
         // Insert Freud joke here.
         id = object.attr('id');
-        category = snapshot['' + id];
 
         // Get the sub-group object.
-        SGO = $('#'+ id + '-SG');
-        
+        SGO = $('#' + id + '-SG');
+
         /* Generating dynamic content! */
+        serviceList = [];
+        serviceList = traverseInclude(snapshot, id);
+        
         SGOValue = '';
         SGOValue += '<div class="col-12">';
 
-        for (service in category) {
-            SGOValue += '<div class="card card-small" id="' + service + '"><div class="card-body text-dark"><p1>' + service + '</p1></div></div>';
+        for (var service in serviceList) {
+
+            serviceName = serviceList[service];
+
+            SGOValue += '<div class="card card-small" id="' + serviceName + '">'
+            SGOValue += '<div class="card-body text-dark">'
+            SGOValue += '<p1>' + serviceName + '</p1>'
+            SGOValue += '</div>'
+            SGOValue += '</div>';
+
         };
 
         SGOValue += '</div>'
 
         SGO.append(SGOValue);
     });
+}
+
+/**
+ * @description traverseInclude ... Traveses all service groups but only returns one with specific key.
+ * @param {Object} services ... JSON object with each service provider. 
+ */
+function traverseInclude(services, key) {
+    serviceList = [];
+    
+    for (var serviceName in services) {
+        hasKey = false;
+        
+        for (var service in services[serviceName]['Services']) {
+            if (service.replace(/ /g, '-') == key) {
+                hasKey = true;
+            }
+        }
+
+        if (hasKey) {
+            serviceList.push(serviceName);
+        }
+    }
+
+    return serviceList;
 }
 
 /**
@@ -101,12 +139,12 @@ function traverseServices(services) {
     for (var serviceName in services) {
         for (var serviceProvided in services[serviceName]['Services']) {
             if (!servicesList.includes(serviceProvided)) {
-                servicesList.push(serviceProvided);
+                servicesList.push(serviceProvided.replace(/ /g, '-'));
             }
         }
     }
 
-    return servicesList;
+    return servicesList.sort();
 }
 
 /**
@@ -114,7 +152,7 @@ function traverseServices(services) {
  * @param {String} service_name ... The name of the service we're generating the modal for.
  * @param {Object} snap ... JSON object with fun data. 
  */
-function createModal(service_name, snap) {
+function createModal(service_name, snap) {    
     $('#servicesProvided').text('');
 
     $('#serviceName').text(service_name);
@@ -122,11 +160,10 @@ function createModal(service_name, snap) {
     $('#serviceLocation').text(snap[service_name]['Location']);
     $('#servicePhoneNumber').text(snap[service_name]['Phone']);
 
-
     servicesText = '';
     
     for (var service in snap[service_name]['Services']) {
-        servicesText += '<li class="list-group-item">' + service +'</li>';
+        servicesText += '<li class="list-group-item">' + service + '</li>';
     }
     $('#servicesProvided').append(servicesText);
 
@@ -134,30 +171,25 @@ function createModal(service_name, snap) {
 }
 
 /* Listeners go here! */
-$('.card').click(function() {
-    object = $(this);
-
-    id = object.attr('id');
-    sub_id = id + '-SG';
-
-    sub_object = $('#' + sub_id);
-
-    if (sub_object.hasClass('hidden')) {
-        sub_object.removeClass('hidden');
-    } else {
-        sub_object.addClass('hidden');
-    }
-});
-
-$(document).on('click', '.card-small', function() {
+$(document).on('click', '.card', function() {
     object = $(this);
 
     id = object.attr('id');
 
-    information = reqInformation().then(function(info) {
-        createModal(id, info);
-    });
+        sub_id = id + '-SG';
+
+        sub_object = $('#' + sub_id);
+
+        if (sub_object.hasClass('hidden')) {
+            sub_object.removeClass('hidden');
+        } else {
+            sub_object.addClass('hidden');
+        }
 });
+
+// information = reqServices().then(function(services) {
+//     createModal(id, services);
+// });?
 
 /**
  * @desc when ready starts initializing script stuff.

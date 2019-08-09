@@ -1,0 +1,81 @@
+[debug] [2019-08-09T03:37:09.832Z] ----------------------------------------------------------------------
+[debug] [2019-08-09T03:37:09.834Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\May\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2019-08-09T03:37:09.834Z] CLI Version:   7.1.1
+[debug] [2019-08-09T03:37:09.834Z] Platform:      win32
+[debug] [2019-08-09T03:37:09.834Z] Node Version:  v10.15.0
+[debug] [2019-08-09T03:37:09.835Z] Time:          Thu Aug 08 2019 20:37:09 GMT-0700 (Pacific Daylight Time)
+[debug] [2019-08-09T03:37:09.835Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2019-08-09T03:37:09.842Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-08-09T03:37:09.842Z] > authorizing via signed-in user
+[debug] [2019-08-09T03:37:09.842Z] [iam] checking project homeless-resources for permissions ["firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]
+[debug] [2019-08-09T03:37:09.844Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/homeless-resources:testIamPermissions  
+
+[debug] [2019-08-09T03:37:10.066Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-09T03:37:10.068Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/homeless-resources  
+ 
+[debug] [2019-08-09T03:37:10.288Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'homeless-resources'...
+[info] 
+[info] i  deploying database, hosting
+[info] i  database: checking rules syntax...
+[debug] [2019-08-09T03:37:10.292Z] >>> HTTP REQUEST PUT https://homeless-resources.firebaseio.com/.settings/rules.json?dryRun=true  
+ {
+  "rules": {
+    ".read": true,
+    ".write": false
+  }
+}
+[debug] [2019-08-09T03:37:10.667Z] <<< HTTP RESPONSE 200
+[info] +  database: rules syntax for database homeless-resources is valid
+[debug] [2019-08-09T03:37:10.669Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/homeless-resources/versions  
+
+[debug] [2019-08-09T03:37:11.706Z] <<< HTTP RESPONSE 200
+[info] i  hosting[homeless-resources]: beginning deploy...
+[info] i  hosting[homeless-resources]: found 16 files in public
+[debug] [2019-08-09T03:37:11.719Z] [hosting] hash cache [cHVibGlj] load error: lines is not defined
+[debug] [2019-08-09T03:37:11.735Z] [hosting] hash cache [cHVibGlj] stored for 16 files
+[debug] [2019-08-09T03:37:11.735Z] [hosting][hash queue][FINAL]
+[debug] [2019-08-09T03:37:11.735Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/homeless-resources/versions/e3192637947df487:populateFiles  
+ <request body omitted>
+[debug] [2019-08-09T03:37:12.406Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-09T03:37:12.408Z] [hosting][populate queue][FINAL]
+[debug] [2019-08-09T03:37:12.408Z] [hosting] uploads queued: 2
+[debug] [2019-08-09T03:37:14.032Z] [hosting][upload queue][FINAL]
+[info] +  hosting[homeless-resources]: file upload complete
+[debug] [2019-08-09T03:37:14.033Z] [hosting] deploy completed after 2325ms
+[info] i  database: releasing rules...
+[debug] [2019-08-09T03:37:14.034Z] >>> HTTP REQUEST PUT https://homeless-resources.firebaseio.com/.settings/rules.json  
+ {
+  "rules": {
+    ".read": true,
+    ".write": false
+  }
+}
+[debug] [2019-08-09T03:37:14.483Z] <<< HTTP RESPONSE 200
+[info] +  database: rules for database homeless-resources released successfully
+[debug] [2019-08-09T03:37:14.484Z] [
+  {
+    "config": {
+      "public": "public",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "site": "homeless-resources"
+    },
+    "site": "homeless-resources",
+    "version": "sites/homeless-resources/versions/e3192637947df487"
+  }
+]
+[info] i  hosting[homeless-resources]: finalizing version...
+[debug] [2019-08-09T03:37:14.484Z] >>> HTTP REQUEST PATCH https://firebasehosting.googleapis.com/v1beta1/sites/homeless-resources/versions/e3192637947df487?updateMask=status  
+
+[debug] [2019-08-09T03:37:14.742Z] <<< HTTP RESPONSE 200
+[debug] [2019-08-09T03:37:14.742Z] [hosting] finalized version for homeless-resources:
+[info] +  hosting[homeless-resources]: version finalized
+[info] i  hosting[homeless-resources]: releasing new version...
+[debug] [2019-08-09T03:37:14.743Z] >>> HTTP REQUEST POST https://firebasehosting.googleapis.com/v1beta1/sites/homeless-resources/releases?version_name=sites/homeless-resources/versions/e3192637947df487  
+

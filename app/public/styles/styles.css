@@ -42,8 +42,11 @@
     transition: visibility 200ms cubic-bezier(0.165, 0.84, 0.44, 1), opacity 200ms cubic-bezier(0.165, 0.84, 0.44, 1);    
     visibility: hidden;
     position: absolute;
-    transform: scale(2);
     overflow: hidden;
+}
+
+.loading-screen.hidden {
+    transform: scale(2);
 }
 
 .card-small {
@@ -69,15 +72,15 @@ body {
 
 /* Loading Screen! */
 .loading-screen {
-    position: fixed;
+    position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
     background-color: #111111;
-    z-index: 999999;
+    z-index: 999;
 
-    transition: all 1000ms cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: all 800ms cubic-bezier(0.165, 0.84, 0.44, 1);
 
     display: flex;
     align-items: center;
@@ -156,12 +159,11 @@ body {
 }
 
 @keyframes loading-thing {
-0%, 100% {
-    opacity: 1;
-}
-50% {
-    opacity: 0.5;
-}
-}
+    0%, 100% {
+        opacity: 1;
+    }
 
-  
+    50% {
+        opacity: 0.5;
+    }
+}
