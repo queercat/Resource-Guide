@@ -19,16 +19,16 @@ database = firebase.database();
  */
 function init() {
     services = reqServices().then(function(services) {
+        visibleFigures(services);
         hiddenFigures(services);
     });
 }
-
 
 /**
  * @returns {Object} ... returns a snapshot of the DB, sadly must wait for promise.
  */
 function reqServices() {
-    services = database.ref('Services').once('value').then(function(services) {
+    services = database.ref('Services-Information').once('value').then(function(services) {
         return services.val();
     });
     
@@ -36,14 +36,30 @@ function reqServices() {
 }
 
 /**
- * @returns {Object} ... returns a snapshot of the DB, sadly must wait for promise.
+ * @desc visibleServices ... Generates the cards for each service group.
+ * @param {Object} services ... JSON object with every service in it. 
  */
-function reqInformation() {
-    information = database.ref('Services-Information').once('value').then(function(information) {
-        return information.val();
-    });
-    
-    return information;
+function visibleFigures(services) {
+    serviceList = traverseServices(services);
+
+    cards = $('#cards');
+
+    for (var service in serviceList) {
+        card = '';
+        serviceName = serviceList[service];
+        
+        card += '<div class="col-12">';
+        card += '<div class="card" id=' + serviceName + '>';
+        card += '<div class="card-body text-dark">';
+        card += '<h2>' + serviceName + '</h2>';
+        card += '</div>'
+        card += '</div>'
+        card += '</div>'
+
+        cards.append(card);
+    }
+
+    $('.loading-screen').addClass('hidden');
 }
 
 /**
@@ -72,6 +88,25 @@ function hiddenFigures(snapshot) {
 
         SGO.append(SGOValue);
     });
+}
+
+/**
+ * @desc traverseServices ... Traverses all the service groups for each service.
+ * @param {Object} services ... JSON object containing each service provider.
+ * @return {Array[String]} ... Returns an array of strings for each service.
+ */
+function traverseServices(services) {
+    servicesList = [];
+    
+    for (var serviceName in services) {
+        for (var serviceProvided in services[serviceName]['Services']) {
+            if (!servicesList.includes(serviceProvided)) {
+                servicesList.push(serviceProvided);
+            }
+        }
+    }
+
+    return servicesList;
 }
 
 /**

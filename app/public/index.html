@@ -24,6 +24,20 @@
     </head>
 
     <body>
+        <div class="loading-screen">
+            <div class="loading-thing">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+
         <!-- Navbars are cool -->
         <div class="navbar navbar-expand-lg navbar-dark">
             <a class="navbar-brand" href="#">
@@ -33,153 +47,39 @@
 
         <!-- Primary Body Container -->
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <div class="card" id="Food">
-                        <div class="card-body text-dark">
-                            <h2>Food</h2>
-                        </div>
-                    </div>
-
-                    <div class="container-fluid hidden" id="Food-SG">
-                    </div>
-                </div>
-
-                <div class="col-12">
-                    <div class="card" id="Medical">
-                        <div class="card-body text-dark">
-                            <h2>Medical</h2>
-                        </div>
-                    </div>
-
-                    <div class="container-fluid hidden" id="Medical-SG">
-                    </div>
-                </div>
-
-                <div class="col-12">
-                    <div class="card" id="Shelter">
-                        <div class="card-body text-dark">
-                            <h2>Shelter</h2>
-                        </div>
-                    </div>
-
-
-                    <div class="container-fluid hidden" id="Shelter-SG">
-                    </div>
-                </div>
-
-                <div class="col-12">
-                    <div class="card" id="Youth-Family">
-                        <div class="card-body text-dark">
-                            <h2>Youth & Family</h2>
-                        </div>
-                    </div>
-
-                    <div class="container-fluid hidden" id="Youth-Family-SG">
-                    </div>
-                </div>
-
-                <div class="col-12">
-                    <div class="card" id="Clothing">
-                        <div class="card-body text-dark">
-                            <h2>Clothing</h2>
-                        </div>
-                    </div>
-
-                    <div class="container-fluid hidden" id="Clothing-SG">
-                    </div>
-                </div>
-
-                <div class="col-12">
-                    <div class="card" id="Mental-Health">
-                        <div class="card-body text-dark">
-                            <h2>Mental Health</h2>
-                        </div>
-                    </div>
-
-                    <div class="container-fluid hidden" id="Mental-Health-SG">
-                    </div>
-                </div>
-
-                <div class="col-12">
-                    <div class="card" id="Veteran">
-                        <div class="card-body text-dark">
-                            <h2>Veteran</h2>
-                        </div>
-                    </div>
-
-                    <div class="container-fluid hidden" id="Veteran-SG">
-                    </div>
-                </div>
-
-                <div class="col-12">
-                    <div class="card" id="LGBTQ">
-                        <div class="card-body text-dark">
-                            <h2>LGBTQ+</h2>
-                        </div>
-                    </div>
-
-                    <div class="container-fluid hidden" id="LGBTQ-SG">
-                    </div>
-                </div>
-                
-                <div class="col-12">
-                    <div class="card" id="LatinX">
-                        <div class="card-body text-dark">
-                            <h2>LatinX</h2>
-                        </div>
-                    </div>
-
-                    <div class="container-fluid hidden" id="LatinX-SG">
-                    </div>
-                </div>
-
-                <div class="col-12">
-                    <div class="card" id="Bus-Information">
-                        <div class="card-body text-dark">
-                            <h2>Bus Information</h2>
-                        </div>
-                    </div>
-
-                    <div class="container-fluid hidden" id="Bus-Information-SG">
-                    </div>
-                </div>
-
-
-            </div>
+            <div class="row" id="cards"></div>
         </div>
 
         <div class="modal fade" id="dynamicModal" tabindex="-1" role="dialog" aria-labelledby="dynamicModal" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="container-fluid">
+                            <div class="row margin-bottom">
+                                <h5 id="serviceName"></h5>
 
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        <div class="row margin-bottom">
-                            <h5 id="serviceName"></h5>
+                                <div class="col-12">
+                                    <p id="serviceDescription"></p>
+                                </div>
 
-                            <div class="col-12">
-                                <p id="serviceDescription"></p>
+                                <div class="col-12">
+                                    <p id="servicePhoneNumber"></p>
+                                </div>
                             </div>
 
-                            <div class="col-12">
-                                <p id="servicePhoneNumber"></p>
+                            <div class="row">
+                                <h5>Services Provided: </h5>
+
+                                <div class="col-12">
+                                    <ul class="list-group" id="servicesProvided">      
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="row">
-                            <h5>Services Provided: </h5>
-
-                            <div class="col-12">
-                                <ul class="list-group" id="servicesProvided">
-                                    
-                            <div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="modal-footer" style="margin-top: 20px;">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    
+                    <div class="modal-footer" style="margin-top: 20px;">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
             </div>
         </div>
