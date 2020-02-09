@@ -11,5 +11,5 @@ A progressive web-app is a web-app that is designed to be smooth fast and reliab
 * RESTful API built for maintaining and accessing of database.
 
 # Languages & Frameworks
-* Python & SQL for the back-end.
+* Firebase for the back-end.
 * HTML5, JS, Bootstrap 5 for front-end.
